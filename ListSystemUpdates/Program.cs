@@ -85,6 +85,13 @@ namespace ListSystemUpdates
             return Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "EditionId", "").ToString();
         }
 
+        private static string GetBuildNumber()
+        {
+            var cbuild = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuild", "").ToString();
+            var ubr = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "UBR", "").ToString();
+            return $"{cbuild}.{ubr}";
+        }
+
         static void Main(string[] args)
         {
             AdminRelauncher();
@@ -95,12 +102,12 @@ namespace ListSystemUpdates
             Console.SetOut(sw);
             Console.WriteLine("--------Windows info--------");
             Console.WriteLine($"Machine name: {GetMachineName()}");
-            Console.Write($"{GetOSVersionString()} {GetEditionId()}");
+            Console.WriteLine($"{GetOSVersionString()} {GetEditionId()}");
+            Console.WriteLine($"Windows build number {GetBuildNumber()}");
             var releaseId = GetReleaseId();
             if (!string.IsNullOrEmpty(releaseId))
-                Console.WriteLine($"Release Id: {releaseId}");
-            else Console.WriteLine();
-                Console.WriteLine("--------Windows updates list--------");
+                Console.WriteLine($"Windows Release Id: {releaseId}");
+            Console.WriteLine("--------Windows updates list--------");
             try
             {
                 InstalledUpdates();
