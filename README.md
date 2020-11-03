@@ -6,7 +6,7 @@ example output
 ```
 --------Windows info--------
 Machine name: WINDOWS-DEV
-Microsoft Windows NT 6.2.9200.0 Professional
+Microsoft Windows NT 6.3.9600.0 Professional
 Windows build number 9600.19785
 --------Windows updates list--------
 Update for Microsoft Camera Codec Pack for Windows 8.1 for x64-based Systems (KB2899189) issued 12/10/2013 12:00:00 AM
